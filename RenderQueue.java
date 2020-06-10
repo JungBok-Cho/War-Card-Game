@@ -1,9 +1,8 @@
 /*
  * JungBok Cho
- * CPSC 5002, Seattle University
- * This is free and unencumbered software released into the public domain.
+ * War Card Game in Java
  */
-package choj8_p3X;
+
 /**
  * This is a program to create a linked-list based generic queue.
  * 
@@ -11,17 +10,21 @@ package choj8_p3X;
  * @version 1.0
  */
 public class RenderQueue<T> {
+	
 	private Node front;	// Head of the List
 	private Node rear;	// Last element on the list
+	
 	
 	/**
 	 * The Node class stores a list element
 	 * and a reference to the next node.
 	 */
 	private class Node {
+		
 		public T value;		// Value of a list element
-		public Node next;		// Next node in the list
-		public Node prev;		// Previous element in the list
+		public Node next;	// Next node in the list
+		public Node prev;	// Previous element in the list
+		
 		/**
 		 * Constructor of Node class
 		 * 
@@ -34,6 +37,7 @@ public class RenderQueue<T> {
 			next = n;
 			prev = p;
 		}	
+		
 		/**
 		 * Constructor of Node class
 		 * 
@@ -42,7 +46,9 @@ public class RenderQueue<T> {
 		public Node(T val) {
 			this(val, null, null);
 		}
+		
 	}
+	
 	
 	/**
 	 * Constructor of RenderQueue class
@@ -52,6 +58,7 @@ public class RenderQueue<T> {
 		rear = null;
 	}
 
+	
 	/**
 	 * Check to see if the queue is empty.
 	 * 
@@ -60,6 +67,7 @@ public class RenderQueue<T> {
 	public boolean empty() {
 		return front == null;
 	}
+	
 	
 	/**
 	 * Get the size of queue
@@ -76,6 +84,7 @@ public class RenderQueue<T> {
 		return sizeNum;
 	}
 	
+	
 	/**
 	 * Make a deep copy of the queue
 	 * 
@@ -91,6 +100,7 @@ public class RenderQueue<T> {
 		return copyObj;
 	}
 	
+	
 	/**
 	 * Adds a value to the queue.
 	 * 
@@ -105,6 +115,7 @@ public class RenderQueue<T> {
 			front = rear;
 		}
 	}
+	
 
 	/**
 	 * Returns and removes the item at the front of the queue.
@@ -126,6 +137,7 @@ public class RenderQueue<T> {
 		}
 	}
 	
+	
 	/**
 	 * Returns value at the front of the queue.
 	 * 
@@ -139,6 +151,7 @@ public class RenderQueue<T> {
 			return front.value;
 		}
 	}
+	
 	
 	/**
 	 * Enqueue new elements from a temporary queue onto the original queue
@@ -160,6 +173,7 @@ public class RenderQueue<T> {
 			appendTemp = appendTemp.next;
 		}
 	}
+	
 
 	/**
 	 * Represent the elements in the queue
@@ -178,11 +192,12 @@ public class RenderQueue<T> {
 		return str;
 	}
 	
+	
 	/**
 	 * Check if two queues are equal
 	 * 
-	 * @param checkThis	A queue to check
-	 * @return	Return true if two queues are equal, otherwise return false
+	 * @param checkThis   A queue to check
+	 * @return   Return true if two queues are equal, otherwise return false
 	 */
 	public boolean equals(RenderQueue<T> checkThis){
 		Node temp = front;
