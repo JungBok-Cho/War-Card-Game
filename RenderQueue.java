@@ -29,8 +29,8 @@ public class RenderQueue<T> {
 		 * Constructor of Node class
 		 * 
 		 * @param val	The element to store in the node.
-		 * @param n		The reference to the successor node.
-		 * @param p		The reference to the predecessor node.
+		 * @param n	The reference to the successor node.
+		 * @param p	The reference to the predecessor node.
 		 */
 		public Node(T val, Node n, Node p) {
 			value = val;
