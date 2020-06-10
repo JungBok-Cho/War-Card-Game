@@ -1,11 +1,11 @@
 /*
  * JungBok Cho
- * CPSC 5002, Seattle University
- * This is free and unencumbered software released into the public domain.
+ * War Card Game in Java
  */
 package choj8_p3X;
 import java.util.ArrayList;
 import java.util.Random;
+
 /**
  * This is a program to create all of the game logic.
  * 
@@ -13,15 +13,17 @@ import java.util.Random;
  * @version 1.0
  */
 public class GameModel {
-	private ArrayList<Integer> cards;		// ArrayList of cards
-	private Stack<Integer> dealer;			// Stack of deal deck
-	private Stack<Integer> discardPile;		// Stack of discard pile deck
-	private int sizeOfCard;						// The size of the card
-	private int numOfPlayers;					// The number of players
+	
+	private ArrayList<Integer> cards;	// ArrayList of cards
+	private Stack<Integer> dealer;		// Stack of deal deck
+	private Stack<Integer> discardPile;	// Stack of discard pile deck
+	private int sizeOfCard;			// The size of the card
+	private int numOfPlayers;		// The number of players
 	
 	// Create ArrayList and RenderQueue objects
 	private ArrayList<RenderQueue<Integer>> players;
 	private RenderQueue<Integer> temp;
+	
 	
 	/**
 	 * Constructor of GameModel
@@ -47,6 +49,7 @@ public class GameModel {
 		createDeck();	// Call createDeck method
 	}
 	
+	
 	/**
 	 * Create the first deck
 	 * 
@@ -63,6 +66,7 @@ public class GameModel {
 		discardPile.push(dealer.pop());
 	}
 	
+	
 	/**
 	 * Get a player's deck
 	 * 
@@ -74,6 +78,7 @@ public class GameModel {
 		return temp.toString();	
 	}
 	
+	
 	/**
 	 * Show the discard card
 	 * 
@@ -83,16 +88,18 @@ public class GameModel {
 		return discardPile.peek();
 	}
 	
+	
 	/**
 	 * Show a current card of a player
 	 * 
 	 * @param index  The index of the player in the array
-	 * @return	Return a current card of a player
+	 * @return   Return a current card of a player
 	 */
 	public int showCurrentCard(int index) {
 		temp = players.get(index);
 		return temp.peek();
 	}
+	
 	
 	/**
 	 * Change the discard card
@@ -103,6 +110,7 @@ public class GameModel {
 		temp = players.get(index);
 		discardPile.push(temp.dequeue());
 	}
+	
 	
 	/**
 	 * Let the players take cards
@@ -122,10 +130,11 @@ public class GameModel {
 		} 
 	}
 	
+	
 	/**
 	 * Check who is the winner
 	 * 
-	 * @return	Return the index of the player, otherwise return -1
+	 * @return   Return the index of the player, otherwise return -1
 	 */
 	public int checkWinner() {
 		for(int i = 0; i < numOfPlayers; i++) {
@@ -155,6 +164,7 @@ public class GameModel {
 		}	
 	}
 	
+	
 	/**
 	 * Shuffles the cards using the
 	 * <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">
@@ -171,6 +181,7 @@ public class GameModel {
 	        cards.set(j, temp);
 	    }
 	}
+	
 	
 	/**
 	 * Check if the deal's deck is empty
