@@ -1,9 +1,8 @@
 /*
  * JungBok Cho
- * CPSC 5002, Seattle University
- * This is free and unencumbered software released into the public domain.
+ * War Card Game in Java
  */
-package choj8_p3X;
+
 /**
  * This is a program to create an array based generic stack.
  * 
@@ -11,18 +10,20 @@ package choj8_p3X;
  * @version 1.0
  */
 public class Stack<T> {
-	private T [] stackList; 	// To hold stack elements
-	private int top;   			// Stack top pointer
+	
+	private T [] stackList;    // To hold stack elements
+	private int top;   	   // Stack top pointer
 
 	/**
-    * Constructor of Stack class
-    * 
-    * @param capcacity	The capacity of the stack
+	 * Constructor of Stack class
+	 * 
+	 * @param capcacity   The capacity of the stack
 	 */
 	public Stack (int capacity) {
 		stackList = (T[]) new Object [capacity];
 		top = 0;
 	}
+	
 	
 	/**
 	 * Return the size of the stack
@@ -33,15 +34,17 @@ public class Stack<T> {
 		return top;
 	}
 
+	
 	/**
-    * Checks for an empty stack
-    * 
-    * @return top == 0	Return true if the stack is empty, otherwise false.
+    	 * Checks for an empty stack
+    	 * 
+    	 * @return top == 0   Return true if the stack is empty, otherwise false.
 	 */
 	public boolean empty() { 
 		return top == 0; 
 	}
 
+	
 	/**
 	 * Pushes a value onto the stack.
 	 * 
@@ -56,11 +59,12 @@ public class Stack<T> {
 			top++;   
 		}
 	}
+	
 
 	/** 
-    * Pops a value off the stack
-    * 
-    * @return retVal	 Return the value popped
+    	 * Pops a value off the stack
+    	 * 
+    	 * @return retVal   Return the value popped
 	 * @exception IllegalArgumentException when the stack is empty
 	 */
 	public T pop() {
@@ -74,10 +78,11 @@ public class Stack<T> {
 		}
 	}
 
+	
 	/** 
-    * Returns the value at the top of the stack.
-    * 
-    * @return stackList[top - 1]  Returns the value at the top of the stack.
+     	 * Returns the value at the top of the stack.
+    	 * 
+    	 * @return stackList[top - 1]  Returns the value at the top of the stack.
 	 * @exception IllegalArgumentException when the stack is empty
 	 */
 	public T peek() {
@@ -88,10 +93,11 @@ public class Stack<T> {
 		}
 	}
 	
+	
 	/**
 	 * Make a deep copy of the stack
 	 * 
-	 * @return copyObj	Return the copied object
+	 * @return copyObj   Return the copied object
 	 */
 	public Stack<T> copy() {
 		Stack<T> copyObj = new Stack<T>(top);
@@ -101,11 +107,12 @@ public class Stack<T> {
 		return copyObj;
 	}
 	
+	
 	/**
 	 * Check if two stacks are equal
 	 * 
-	 * @param checkThis	A stack to check
-	 * @return	Return true if two stacks are equal, otherwise return false
+	 * @param checkThis   A stack to check
+	 * @return   Return true if two stacks are equal, otherwise return false
 	 */
 	public boolean equals(Stack<T> checkThis) {
 		if(top != checkThis.top) {
@@ -118,6 +125,7 @@ public class Stack<T> {
 		}
 		return true;
 	}
+	
 	
 	/**
 	 * Represent the elements in the stack
