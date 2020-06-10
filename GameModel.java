@@ -2,7 +2,6 @@
  * JungBok Cho
  * War Card Game in Java
  */
-package choj8_p3X;
 import java.util.ArrayList;
 import java.util.Random;
 
