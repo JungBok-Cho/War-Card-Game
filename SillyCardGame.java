@@ -1,10 +1,9 @@
 /*
  * JungBok Cho
- * CPSC 5002, Seattle University
- * This is free and unencumbered software released into the public domain.
+ * War Card Game in Java
  */
-package choj8_p3X;
 import java.util.Scanner;
+
 /**
  * This is a program to play the Silly Card Game.
  * 
@@ -12,6 +11,7 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class SillyCardGame {
+	
 	/**
 	 * Play the game, using GameModel, RenderQueue, Stack classes.
 	 * 
@@ -23,13 +23,14 @@ public class SillyCardGame {
 		System.out.println("Thank you for playing this game!\n");
 	}
 	
+	
 	/**
 	 * Check whether user wants to play this program again or not
 	 */
 	private static void playAgain() {
-		final String YES = "y";		// Constant to repeat the program
-		String again = "y";			// Variable to repeat the game
-		int numOfPlayers = 0;		// The number of players
+		final String YES = "y";	   // Constant to repeat the program
+		String again = "y";	   // Variable to repeat the game
+		int numOfPlayers = 0;	   // The number of players
 		
 		// Create a Scanner object and an array of player names
 		Scanner keyboard = new Scanner(System.in);
@@ -60,6 +61,7 @@ public class SillyCardGame {
 		keyboard.close();
 	}
 	
+	
 	/**
 	 * Ask user input the number of players
 	 * 
@@ -71,17 +73,18 @@ public class SillyCardGame {
 			numOfPlayers = keyboard.nextInt();
 			if(numOfPlayers < 2 || numOfPlayers > 6) {
 				System.out.println("This game allows only 2 to 6 players,"
-										 + " try again...\n");
+						   + " try again...\n");
 			}
 		} while(numOfPlayers < 2 || numOfPlayers > 6);
 		keyboard.nextLine();
 		return numOfPlayers;
 	}
 	
+	
 	/**
 	 * Ask user input the players' names
 	 * 
-	 * @param keyboard		Object of Scanner
+	 * @param keyboard	Object of Scanner
 	 * @param playerNames	The array of the player names
 	 */
 	private static void getPlayerNames(Scanner keyboard, String[] playerNames) {
@@ -91,23 +94,26 @@ public class SillyCardGame {
 		}
 	}
 	
+	
 	/**
 	 * Start the game
 	 * 
-	 * @param keyboard		Object of Scanner
+	 * @param keyboard	Object of Scanner
 	 * @param playerNames	The array of the player names
-	 * @return 			  		Return a message if there is a winner
+	 * @return   Return a message if there is a winner
 	 */
 	private static String startGame(Scanner keyboard, String[] playerNames) {
-		final int CARDMAX = 52;		// The total number of the cards
-		final int NOWINNER = -1;	// If there is no winner, give -1
-		int winner = -1,				// Check who is the winner
-			 discardCard,				// To hold a value of discard card
-			 currentCard;				// To hold a value of current card
-		int numOfPlayers = playerNames.length;				//
+		
+		final int CARDMAX = 52;			// The total number of the cards
+		final int NOWINNER = -1;		// If there is no winner, give -1
+		int winner = -1,			// Check who is the winner
+		    discardCard,			// To hold a value of discard card
+		    currentCard;			// To hold a value of current card
+		int numOfPlayers = playerNames.length;	// Number of Players	
 		
 		// Create GameModel object
 		GameModel gameModel = new GameModel(CARDMAX, numOfPlayers);
+		
 		// Call giveFirstDeck method
 		gameModel.giveFirstDeck(numOfPlayers);
 		
@@ -134,8 +140,7 @@ public class SillyCardGame {
 				
 				// Check if the current card is higher than the discard card
 				winner = checkDiscardCurrentCard(discardCard, currentCard, 
-															gameModel, i, winner, 
-															playerNames);			
+								 gameModel, i, winner, playerNames);			
 				if(winner != NOWINNER) {
 					return "\nThe game has finished.";
 				}		
@@ -145,23 +150,25 @@ public class SillyCardGame {
 		return "\nThe game has finished.";
 	}
 	
+	
 	/**
 	 * Check if the current card is higher than the discard card,
 	 * then print out a message
 	 * 
 	 * @param discardCard	To hold a value of discard card
 	 * @param currentCard	To hold a value of current card
-	 * @param gameModel		GameModel object
-	 * @param index			The index of the player in the array
-	 * @param winner			The winner's index
+	 * @param gameModel	GameModel object
+	 * @param index		The index of the player in the array
+	 * @param winner	The winner's index
 	 * @param playerNames	The array of the player names
-	 * @return					Return the index of player names 
-	 * 							if there is a winner, otherwise return NOWINNER
+	 * @return   Return the index of player names 
+	 * 	     if there is a winner, otherwise return NOWINNER
 	 */
-	private static int checkDiscardCurrentCard(int discardCard, 
-			int currentCard, GameModel gameModel, int index, int winner,
-			String[] playerNames) {
-		final int NOWINNER = -1;	// If there is no winner
+	private static int checkDiscardCurrentCard(int discardCard, int currentCard, 
+						   GameModel gameModel, int index, int winner,
+						   String[] playerNames) {
+		
+		final int NOWINNER = -1;   // If there is no winner
 		
 		// After checking which one is higher, call afterCheck method
 		if(discardCard > currentCard) {
